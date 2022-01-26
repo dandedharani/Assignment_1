@@ -1,0 +1,39 @@
+#include <iostream>
+
+struct node{
+    int data;
+    struct node *next;
+};
+
+void delposition(struct node **head, int position){
+    struct node *current = *head;
+    struct node *previous = *head;
+    if(*head==NULL)
+    cout<<"List is empty";
+    else if(position==1){
+        *head=current->next;
+        free(current);
+        current=NULL;
+    }
+    else{
+        while(position!=1){
+            previous=current;
+            current=current->next;
+            position=position-1;
+        }
+        previous->next = current->next;
+        free(current);
+        current=NULL;
+    }
+}
+
+int main() {
+    int position=2;
+    delposition(&head, position);
+    ptr=head;
+    while(ptr!=NULL){
+        cout<<ptr->data;
+        ptr=ptr->next;
+    }
+    return 0;
+}
