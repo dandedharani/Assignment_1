@@ -1,0 +1,27 @@
+#include <iostream>
+
+struct node{
+    int data;
+    struct node *next;
+};
+
+void create_node(struct node **head, int data){
+    *head = (struct node *)malloc(sizeof(struct node));
+    (*head)->data = data;
+    (*head)->next = NULL;
+}
+void printLinkedList(struct node *head){
+    while(head!=NULL){
+        std::cout <<head->data <<"\n";
+        head = head->next;
+    }
+    
+}
+int main() {
+    struct node *head = NULL;
+    create_node(&head, 1);
+    create_node(&head, 2);
+    printLinkedList(head);
+
+    return 0;
+}
