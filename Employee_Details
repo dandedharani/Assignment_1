@@ -1,0 +1,101 @@
+#include <iostream>
+#include <ctime>
+
+using namespace std;
+
+struct TIME
+{
+  int seconds;
+  int minutes;
+  int hours;
+};
+
+
+void display_duration(struct TIME, struct TIME, struct TIME *);
+
+void display_duration(struct TIME t1, struct TIME t2, struct TIME *difference){
+    
+    if(t2.seconds > t1.seconds) {
+        difference->seconds = t2.seconds - t1.seconds;
+    }
+    else {
+        difference->seconds = t1.seconds - t2.seconds;
+    }
+    
+    
+    if(t2.minutes > t1.minutes) {
+        difference->minutes = t2.minutes - t1.minutes;
+    }
+    else {
+        difference->minutes = t1.minutes - t2.minutes;
+    }
+    
+    
+    if(t2.hours > t1.hours) {
+        difference->hours = t2.hours-t1.hours;
+    }
+    else{
+        difference->hours = t1.hours-t2.hours;
+    }
+    
+}
+
+
+int main() {
+    int employee_id;
+    int option;
+    struct TIME t1, t2, difference;
+    float leave_balance = 15.00;
+    
+    for(int i=1;i<=10;i++){
+    cout<<"Employee "<< i << endl;
+    cout<<"Enter Employee id: ";
+    cin>> employee_id;
+    
+    
+    cout << "Enter entry time" << endl;
+    cin >> t1.hours >> t1.minutes >> t1.seconds;
+
+    cout << "Enter exit time" << endl;
+    cin >> t2.hours >> t2.minutes >> t2.seconds;
+    
+    cout<<"Enter the option: ";
+    cin>> option;
+    if(option == 1){
+        cout<< "Displays Leave Availability" << endl;
+        display_duration(t1,t2,&difference);
+        cout << "Time duration: " << difference.hours << ":" << difference.minutes << ":" << difference.seconds << endl;
+        
+        if(difference.hours>=8 && difference.minutes>=0 && difference.seconds>=0 ){
+            cout << "Employee is present" << endl;
+            cout << "Leave Balance = " << leave_balance << endl;
+        }
+        
+        else if((difference.hours>6) && (difference.hours<8)){
+            cout << "Employee is present" << endl;
+            cout << "Leave Balance = " << leave_balance << endl;
+        }
+        
+        else if(difference.hours==6 && difference.minutes==0 && difference.seconds==0){
+            cout << "Employee has taken a half day leave" << endl;
+            leave_balance = leave_balance - 0.50;
+            cout << "Leave Balance = " << leave_balance << endl;
+        }
+        
+        else if(difference.hours<6){
+            cout << "Employee has taken a full day leave" << endl;
+            leave_balance = leave_balance - 1.00;
+            cout << "Leave Balance = " << leave_balance << endl;
+        }
+    }
+    
+    else if(option == 2){
+        cout<< "Displays Duration" << endl;
+        display_duration(t1,t2,&difference);
+    
+        cout << "Time duration: " << difference.hours << ":" << difference.minutes << ":" << difference.seconds << endl;
+        
+    }
+    cout << endl;
+}
+}
