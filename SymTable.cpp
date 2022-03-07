@@ -52,7 +52,7 @@ int SymTable_getLength (SymTable *oSymTable){
 
 
 // function used to search whether a key is present or not
-SymTable_contains(SymTable *oSymTable, const char *new_key){
+int SymTable_contains(SymTable *oSymTable, const char *new_key){
 	SymTable *current = oSymTable;
     while (current != NULL)
     {
