@@ -64,8 +64,19 @@ int SymTable_contains(SymTable *oSymTable, const char *new_key){
 }
 
 
+// function used to return the value of the given key
+void SymTable_get(SymTable *oSymTable, const char *new_key){
+	SymTable *current = oSymTable;
+	while (current != NULL){
+        if(current->pcKey == new_key){
+        	cout<<"The value of given key is "<<current->pvValue<<endl;
+		}
+		current = current->n;	
+	}
+}
+
 int main(){
-	SymTable* SymTable_new();
+    SymTable* SymTable_new();
     struct SymTable *oSymTable = NULL;
     SymTable_put(&oSymTable,"b","char");
     SymTable_put(&oSymTable,"c","int");
@@ -73,5 +84,6 @@ int main(){
     int x = SymTable_getLength(oSymTable);
     cout<<"Length of SymTable is "<<x<<endl;
     int y = SymTable_contains(oSymTable,"c");
-    cout<<y;
+    cout<<y<<endl;
+    SymTable_get(oSymTable,"b");
 } 
