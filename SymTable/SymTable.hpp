@@ -1,3 +1,5 @@
+// header file
+
 struct SymTable
 {
 	const char *pcKey;
