@@ -26,13 +26,23 @@ struct SymTable* SymTable_new()
 // SymTable_put function
 void SymTable_put (SymTable **oSymTable, const char *pcKey, const char *pvValue)
 {
-	SymTable* a;
+    SymTable* a;
+	SymTable* last = (*oSymTable);
     a = SymTable_new();
     a->pcKey = pcKey;
     a->pvValue = pvValue;
-    a->n = (*oSymTable);
-    (*oSymTable) = a;
-    std::cout<<a->pcKey<<" "<<a->pvValue<<endl;
+    a->n = NULL;
+    if ((*oSymTable) == NULL)
+	{ 
+        (*oSymTable) = a; 
+        return; 
+    } 
+    while (last->n != NULL)
+	{
+        last = last->n; 
+    }
+    last->n = a; 
+    return; 
 }
 
 
