@@ -7,6 +7,7 @@ int main()
     SymTable_put (&oSymTable,"b","char");
     SymTable_put (&oSymTable,"c","int");
     SymTable_put (&oSymTable,"d","float");
+	print_SymTable (oSymTable);
     int x = SymTable_getLength (oSymTable);
     cout<<"Length of SymTable is "<<x<<endl;
     int y = SymTable_contains (oSymTable,"c");
