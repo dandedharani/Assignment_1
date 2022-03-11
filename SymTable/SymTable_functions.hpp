@@ -21,12 +21,6 @@ struct SymTable* SymTable_new()
 }
 
 
-void SymTable_free(){
-	struct SymTable *SymTable_new;
-	SymTable_new = (SymTable*) malloc(1 * sizeof(SymTable));
-    free(SymTable_new);
-}
-
 // SymTable_put function
 void SymTable_put (SymTable **oSymTable, const char *pcKey, const char *pvValue)
 {
